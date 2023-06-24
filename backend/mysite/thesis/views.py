@@ -60,18 +60,25 @@ def predictImage(request):
     test_image_array = np.reshape(features_batch, (1, 4 * 4 * 1280))
     predi = model.predict(test_image_array)
     
-    # with model_graph.as_default():
-    #     with tf_Session.as_default():
-    #         features_batch = conv_base.predict(test_image_array)
-    #         test_image_array = np.reshape(features_batch, (1, 4 * 4 * 1280))
-    #         predi = model.predict(test_image_array)
     
     score = float(predi[0])
-    yellowingScore = round(100 * score, 2)
-    leafletScore = round(100 * (1 - score), 2)
+    yellowingScore = round(100 * score)
+    leafletScore = round(100 * (1 - score))
+
+    result = f"This image is {leafletScore}% Drying of Leaflets and {yellowingScore}% Yellowing" 
+
+    if yellowingScore > leafletScore:
+        identification = "Diagnosis: Yellowing"
+        solution = "Solution/Mitigation: cultivate resistant coconut varieties like Malayan dwarf or Maypan; antibiotic treatment is advantageous but frequently unfeasible for large-scale plantations (Khes et al., 2021)."
+    elif yellowingScore < leafletScore:
+        identification = "Diagnosis: Drying of Leaflets"
+        solution = "Solution/Mitigation: The use of tetracycline treatment on a few infected palms resulted in a definite symptom remission. Recurring symptoms four months after stopping medication suggested that phytoplasmas may be the issue (Perira et al., 2012)."
+    else:
+        identification = "Diagnosisn: Record of this data does not exist!"
+        solution = "Not applicable"
 
     # predictedLabel = labelInfo[str(np.argmax(predi[0]))]
 
-    contexttwo={'filePathName': filePathName, 'yellowingScore': yellowingScore, 'leafletScore': leafletScore}
+    contexttwo={'filePathName': filePathName, 'result': result, 'identification': identification, 'solution': solution}
 
     return render(request, 'index.html', contexttwo)

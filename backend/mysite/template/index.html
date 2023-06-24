@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Upload Image for Classification</h1>
+    <h1>Upload Coconut Disease Image for Classification</h1>
     <form action="predictImage/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="uploadFile">
@@ -15,11 +15,13 @@
             </label>
         </div>
         <input name="filePath" type="file">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Predict">
         <div class="img">
-            <h2>This image is {{leafletScore}}% Drying of Leaflets and {{yellowingScore}}% Yellowing </h2>
+            <h2>{{result}} </h2>
+            <h4>{{identification}}</h4>
             <img style="width: 20%;" src="{{filePathName}}" alt="imagename"><br>
-            {{filePathName}}
+            <h4>{{solution}}</h4>
+            <!-- {{filePathName}} -->
         </div>
     </form>
 </body>
