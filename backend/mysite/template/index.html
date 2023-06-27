@@ -1,28 +1,69 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>Upload Coconut Disease Image for Classification</h1>
-    <form action="predictImage/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <div class="uploadFile">
-            <label for="file">
-                Upload Image File:
-            </label>
+    <nav>
+        <div class="nav-wrapper">
+            <div class="logo">
+                <a href="#" class="icon-logo"><i class="fa-solid fa-virus-slash"></i>Classification</a>
+            </div>
+            <ul id="menu">
+                <li><a href="">Image Classifier</a></li>
+                <li><a href="">Database</a></li>
+            </ul>
         </div>
-        <input name="filePath" type="file">
-        <input type="submit" value="Predict">
-        <div class="img">
-            <h2>{{result}} </h2>
-            <h4>{{identification}}</h4>
-            <img style="width: 20%;" src="{{filePathName}}" alt="imagename"><br>
-            <h4>{{solution}}</h4>
-            <!-- {{filePathName}} -->
-        </div>
-    </form>
+    </nav>
+    <!-- menu icon  -->
+    <div class="menuIcon">
+        <span class="icon icon-bars"></span>
+        <span class="icon icon-bars overlay"></span>
+    </div>
+
+    <div class="overlay-menu">
+        <ul id="menu">
+            <li><a href=""></a>Image Classifier</li>
+            <li><a href=""></a>Database</li>
+        </ul>
+    </div>
+
+    <h1>Coconut Disease Classifier</h1>
+    <p>Upload Coconut Disease Image for Classification</p><br>
+    <div class="box">
+        <form class="container-big" action="predictImage/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="container">
+                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <header>Drag & Drop to Upload File</header>
+                <span>OR</span>
+                <input name="filePath" type="file" id="fileInput">
+            </div>
+            <div class="buttons">
+                <input type="submit" value="Predict" class="predict">
+                <input type="reset" value="Reset" class="reset">
+            </div>
+            <div class="img">
+                <!-- <h2>{{result}} </h2> -->
+                <h4>{{identification}}</h4>
+                <img src="{{filePathName}}"><br>
+                <p class="p-solution">{{solution}}</p>
+                <!-- {{filePathName}} -->
+            </div>
+           
+        </form>
+    </div>
+
+    <footer>
+        <p>Created by Jasper Villarosa. © 2023</p>
+    </footer>
+
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
