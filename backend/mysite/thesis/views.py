@@ -7,6 +7,7 @@ import json
 from tensorflow import Graph
 import tensorflow as tf
 import numpy as np
+import os
 # import tensorflow.compat.v1 as tf
 # tf.disable_v2_behavior()
 
@@ -82,3 +83,10 @@ def predictImage(request):
     contexttwo={'filePathName': filePathName, 'result': result, 'identification': identification, 'solution': solution}
 
     return render(request, 'index.html', contexttwo)
+
+def viewDatabase(request):
+    listofImages = os.listdir('./media/')
+    listofImagePath = ['./media/'+i for i in listofImages]
+    fs=FileSystemStorage()
+    context = {'listofImagePath': listofImagePath}
+    return render(request, 'viewDB.html', context)
