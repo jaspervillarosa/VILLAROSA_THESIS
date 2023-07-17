@@ -17,7 +17,7 @@ import os
 #     labelInfo = f.read()
 
 # labelInfo = json.loads(labelInfo)
-model = load_model('./models/MobileNetV2_Architecture_coconutDiseases_ai_training.h5')
+model = load_model('./models/MobileNetV2_Architecture_coconutDamages_ai_training.h5')
 
 
 # model_graph = Graph()
@@ -63,19 +63,19 @@ def predictImage(request):
     
     
     score = float(predi[0])
-    yellowingScore = round(100 * score)
-    leafletScore = round(100 * (1 - score))
+    scaleInsectDamageScore = round(100 * score)
+    rhinocerosBeetleDamageScore = round(100 * (1 - score))
 
-    result = f"This image is {leafletScore}% Drying of Leaflets and {yellowingScore}% Yellowing" 
+    result = f"This image is {rhinocerosBeetleDamageScore}% Coconut Rhinoceros Beetle Damage and {scaleInsectDamageScore}% Coconut Scale Insect Damage."
 
-    if yellowingScore > leafletScore:
-        identification = "Diagnosis: Yellowing"
-        solution = "Solution/Mitigation: cultivate resistant coconut varieties like Malayan dwarf or Maypan; antibiotic treatment is advantageous but frequently unfeasible for large-scale plantations (Khes et al., 2021)."
-    elif yellowingScore < leafletScore:
-        identification = "Diagnosis: Drying of Leaflets"
-        solution = "Solution/Mitigation: The use of tetracycline treatment on a few infected palms resulted in a definite symptom remission. Recurring symptoms four months after stopping medication suggested that phytoplasmas may be the issue (Perira et al., 2012)."
+    if scaleInsectDamageScore > rhinocerosBeetleDamageScore:
+        identification = "Diagnosis: Coconut Scale Insect Damage"
+        solution = "Management Strategies \n\n Cultural Method:Regulated prunning of infested fronds \n Chemical Method: Chemical control using systemic insecticides, FPA prescribed for coconut pests by trunk injection(for emergency only)\n. Topical application of vegetable oil in young palms can be done during cooler months \n Biological Method: Sustained release of biological control agents like Chilochorus sp., Telsimia sp., Pseudoscymnus anomalus, Cybocephalus sp., Bathracedra sp., Comperiella calauanica\n Regulatory Control: Implementation of quarantine regulations and establishment of checkpoints (PCA Davao Research Center, 2023)"
+    elif scaleInsectDamageScore < rhinocerosBeetleDamageScore:
+        identification = "Diagnosis: Coconut Rhinoceros Beetle Damage"
+        solution = "Management Strategies \n\n Biological Control: Establishment of coconut log traps inoculated with Green Muscardine Fungus (GMF) granules. Concentrated Oryctes nudivurus is dropped to the mouth of beetles. Infection spreads through mating and visit in breeding sites \n Cultural Control: Collection and utilization of coconut debris or farm waste t avoid piling. PRactice farm sanitation. Regular inspection of all possible breeding sites and collection of all stages of the beetle. Plant covercrops if intercropping is not practiced \n Chemical Control: Installation of rhinoceros beetle pheromone in traps, enhanced with food bait (PCA Davao Research Center, 2023)"
     else:
-        identification = "Diagnosisn: Record of this data does not exist!"
+        identification = "Diagnosis: Record of this data does not exist!"
         solution = "Not applicable"
 
     # predictedLabel = labelInfo[str(np.argmax(predi[0]))]
@@ -90,3 +90,7 @@ def viewDatabase(request):
     fs=FileSystemStorage()
     context = {'listofImagePath': listofImagePath}
     return render(request, 'viewDB.html', context)
+
+def captureImage(request):
+    context = {}
+    return render(request, 'captureMedia.html', context)

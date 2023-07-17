@@ -73,10 +73,10 @@ h1{
   }
 }
 
-.container input::-webkit-file-upload-button {
+.container .fileInput::-webkit-file-upload-button {
   visibility: hidden;
 }
-.container input::before{
+.container .fileInput::before{
   content: "Browse";
   display: inline-block;
   background-color:  #e3e3e3;
@@ -94,12 +94,13 @@ h1{
   text-align: center;
 }
 
-.container input:hover::before{
+.container .fileInput:hover::before{
   border-color: black;
 }
-.container input:active::before{
+.container .fileInput:active::before{
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+
 .predict, .reset{
   cursor: pointer;
 }
@@ -244,7 +245,7 @@ h1{
 }
 
 .box form {
-  margin-block: 2rem;
+  margin-block: 5rem;
   gap: 2rem;
   padding: 1rem;
   border-radius: 6px;
@@ -281,10 +282,10 @@ nav {
 .nav-wrapper {
   margin: auto;
   text-align: center;
-  width: 70%;
-} @media(max-width: 768px){
+  width: 80%;
+} @media(max-width: 930px){
   .nav-wrapper{
-    width: 90%;
+    width: 100%;
   }
 }@media(max-width: 638px){
   .nav-wrapper{
@@ -316,13 +317,14 @@ nav {
 }
 
 nav ul {
+
   display: inline-block;
   list-style: none;
   margin-top: -2px;
   text-align: right;
   transition: transform 0.5s ease-out;
   -webkit-transition: transform 0.5s ease-out;
-}@media(max-width: 640px){
+}@media(max-width: 768px){
   nav ul{
     display: none;
   }
@@ -353,7 +355,7 @@ nav li a {
 }
 
 nav li a:hover{
-  color: rgb(28, 121, 184);
+  color: #489557;
   transition: all 1s ease;
   -webkit-transition: all 1s ease;
 }
@@ -408,7 +410,7 @@ nav li a:hover:after{
 
 /* gg  */
 
-@media(max-width: 640px) {
+@media(max-width: 738px) {
   .menuIcon {
     cursor: pointer;
     display: block;
@@ -590,7 +592,7 @@ nav li a:hover:after{
   
   .overlay-menu li a:hover,
   .overlay-menu li a:active {
-    color: rgb(28, 121, 184);
+    color:  #F3F3F6;
     -webkit-transition: color 0.3s ease;
     transition: color 0.3s ease;
     cursor: pointer;

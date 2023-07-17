@@ -18,6 +18,7 @@
             <ul id="menu">
                 <li><a href="/">Image Classifier</a></li>
                 <li><a href="viewDatabase">Database</a></li>
+                <li><a href="captureImage">Image Capture</a></li>
             </ul>
         </div>
     </nav>
@@ -31,12 +32,13 @@
         <ul id="menu">
             <li><a href="/">Image Classifier</a></li>
             <li><a href="viewDatabase" >Database</a></li>
+            <li><a href="captureImage">Image Capture</a></li>
         </ul>
     </div>
 
     <div class="title-container">
-        <h1>Coconut Disease Classifier</h1>
-        <p>Upload Coconut Disease Image for Classification</p><br>
+        <h1>Coconut Damage Classifier</h1>
+        <p>Upload Coconut Pest Damage for Classification</p><br>
     </div>
     <div class="box">
         <form class="container-big" action="predictImage/" method="post" enctype="multipart/form-data">
@@ -46,7 +48,7 @@
                     <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
                     <header class="header">Drag & Drop to Upload File</header>
                     <span>OR</span>
-                    <input name="filePath" type="file" id="fileInput">
+                    <input name="filePath" type="file" class="fileInput">
                 </div>
                 <div class="buttons">
                     <input type="submit" tabindex="1" value="Predict" class="predict">

@@ -1,8 +1,8 @@
 const supportsFileSystemAccessAPI = 
 'getAsFileSystemHandle' in DataTransferItem.prototype;
 
-const elem = document.querySelector('.container-dragDrop')
-const fileInput = document.querySelector('#fileInput')
+const elem = document.querySelector(".container-dragDrop")
+const fileInput = document.querySelector(".fileInput")
 const dragText = elem.querySelector(".header")
 const reset = elem.querySelector(".reset")
 const predict = elem.querySelector(".predict")
@@ -14,6 +14,7 @@ elem.addEventListener('dragover', (e) => {
 
 // Visually highlight the dropzone 
 elem.addEventListener('dragenter', (e) => {
+    e.preventDefault();
     elem.classList.add("active")
     dragText.textContent = "Release to Upload"
 
@@ -40,4 +41,15 @@ reset.addEventListener('click', (e) => {
     dragText.textContent="Drag and Drop to Upload File";
 
 })
+
+fileInput.addEventListener('click', (e) => {
+    if(fileInput.value!=null){
+        dragText.textContent = "File Uploaded"
+        elem.classList.add("active")
+    }
+    else{
+        dragText.textContent="Drag and Drop to Upload File";
+    }
+})
+
 
