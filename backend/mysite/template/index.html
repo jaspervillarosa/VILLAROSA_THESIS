@@ -8,6 +8,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{% static 'main.css' %}">
     <script src="https://kit.fontawesome.com/d258feda9a.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <nav>
@@ -56,8 +57,7 @@
                 </div>
             </div>
             <div class="img">
-                <!-- <h2>{{result}} </h2> -->
-                <h4>{{identification}}</h4>
+                <h5>{{identification}}</h5>
                 <div class="img-wrap">
                     <span class="t_over"></span>
                     <span class="t_over"></span>
@@ -71,18 +71,35 @@
                     <span class="t_over"></span>
                     <img class="img-index" src="{{filePathName}}"><br>
                 </div>
-                <p class="p-solution">{{solution}}</p>
+                <div class="p-solution">
+                    <p>{{solution1}}</p>
+                    <p>{{solution2}}</p>
+                    <p>{{solution3}}</p>
+                    <p>{{solution4}}</p>
+                    <p>{{solution5}}</p>
+                    <p>{{solution6}}</p>
+                    
+                </div>
                 <!-- {{filePathName}} -->
             </div>
            
         </form>
     </div>
+    <div class="boxTwo">
+        {% autoescape off %}
+        <div class="graph">{{ g }}</div>
+        {% endautoescape %}
+    </div>
+    <!-- <div>
+        <p>{{train_acc}}</p>
+    </div> -->
+
 
     <footer>
-        <p>Created by Jasper Villarosa. © 2023</p>
+        <p class="p-footer">Created by Jasper Villarosa. © 2023</p>
     </footer>
-
     <script src="{% static 'script.js' %}"></script>
     <script src="{% static 'toggle.js' %}"></script>
+    
 </body>
 </html>

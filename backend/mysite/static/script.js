@@ -6,6 +6,8 @@ const fileInput = document.querySelector(".fileInput")
 const dragText = elem.querySelector(".header")
 const reset = elem.querySelector(".reset")
 const predict = elem.querySelector(".predict")
+let imgDisplay = document.querySelector('.img')
+let graph = document.querySelector('.graph')
 
 // prevent navigation 
 elem.addEventListener('dragover', (e) => {
@@ -38,7 +40,9 @@ reset.addEventListener('click', (e) => {
     e.preventDefault()
     elem.classList.remove("active");
     fileInput.value="";
-    dragText.textContent="Drag and Drop to Upload File";
+    dragText.textContent="Drag & Drop to Upload File";
+    imgDisplay.style.display = "none"
+    graph.value = ''
 
 })
 
@@ -48,7 +52,7 @@ fileInput.addEventListener('click', (e) => {
         elem.classList.add("active")
     }
     else{
-        dragText.textContent="Drag and Drop to Upload File";
+        dragText.textContent="Drag & Drop to Upload File";
     }
 })
 

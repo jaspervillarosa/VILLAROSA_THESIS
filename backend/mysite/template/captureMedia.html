@@ -47,23 +47,25 @@
         {% csrf_token %}
         <div class="container-Capture">
             <div class="container">
-                <div class="icon"><i class="fa-solid fa-camera-retro"></i></div>
-                <header class="headerCapture">Capture Media</header>
-                <input 
-                    type="file" 
-                    name="filePath"     
-                    id="capture" 
-                    class="fileCapture"
-                    accept="image/*" 
-                    capture 
-                     />
+                <div class="displayContainer">
+                    <div class="icon"><i class="fa-solid fa-camera-retro"></i></div>
+                    <header class="headerCapture">Capture Media</header>
+                    <input 
+                        type="file" 
+                        name="filePath"     
+                        id="capture" 
+                        class="fileCapture"
+                        accept="image/*" 
+                        capture 
+                         />
                 </div>
+                <div class="imgContainer" style="display: none">
+                    <p><img id="img" /></p>
+                </div>
+            </div>
             <div class="buttons">
                 <input type="submit" tabindex="1" value="Predict" class="predictCapture">
                 <input type="reset" value="Reset" class="resetCapture">
-            </div>
-            <div class="imgContainer">
-                <p><img src="" id="img" alt="from phone"/></p>
             </div>
         </div>
         <div class="img">
@@ -101,6 +103,8 @@
         
         document.addEventListener('DOMContentLoaded', (ev)=>{
             let form = document.getElementById('myform');
+            let targetDiv = document.querySelector('.displayContainer')
+            let imgContainer = document.querySelector('.imgContainer')
             //get the captured media file
             let input = document.getElementById('capture');
             
@@ -116,6 +120,18 @@
                 
                 
             })
+
+            input.onclick = function () {
+                if (targetDiv.style.display !== "none"){
+                    targetDiv.style.display = "none";
+                    imgContainer.style.display = "block";
+                }else{
+                    targetDiv.style.display="flex";
+                    imgContainer.style.display = "none";
+                }
+            }
+            
+            
             
         })
     </script>

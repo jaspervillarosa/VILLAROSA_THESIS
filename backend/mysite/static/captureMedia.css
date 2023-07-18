@@ -31,9 +31,15 @@
   }
 }
 
-.container-dragDrop.active{
+.displayContainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.container-Capture.active{
   border: 2px solid #489557;
-  background-color: #F3F3F6;
+  background-color: transparent;
 }
 
 .title-container{
@@ -101,7 +107,7 @@ h1{
 .container .fileCapture:hover::before{
   border-color: black;
 }
-.container .fileCapture:active::before{
+.container .img:active::before{
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 

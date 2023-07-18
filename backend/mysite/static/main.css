@@ -13,9 +13,9 @@ body{
   background: #F3F3F6;
   flex-direction: column;
   letter-spacing: 1px;
-
   
 }
+
 .container-dragDrop{
   border: 2px dashed #489557;
   /* border-top: 2px solid lightgray; */
@@ -42,6 +42,9 @@ body{
 h1{
     text-align: center;
     color: #489557;
+}
+h5{
+  font-size: 1rem;
 }
 .container-big{
   max-width: 70%;
@@ -232,7 +235,12 @@ h1{
  */
 
 .p-solution{
+  max-height: 120px;
+  overflow-y: scroll;
+}
+p{
   text-align: justify;
+  margin-top: 0.25rem;
 }
 
 .box {
@@ -241,7 +249,30 @@ h1{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   margin-inline: 1rem;
+}
+
+.boxTwo{
+  margin-top: 2rem;
+  width: 90%;
+  height: 30%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-inline: 1rem;
+}@media(max-width: 638px){
+  .boxTwo{
+    width: 100%;
+  }
+}
+
+.graph{
+  min-width: 70%;
+  display: flex;
+  justify-content: center;
 }
 
 .box form {
@@ -327,6 +358,7 @@ nav ul {
 }@media(max-width: 768px){
   nav ul{
     display: none;
+    width: auto;
   }
 }@media(orientation: landscape){
   nav ul {
@@ -363,14 +395,16 @@ nav li a:hover{
 /* footer  */
 footer{
   bottom: 0;
+  display: flex;
+  justify-content: center;
   width: 100vw;
   text-align: center;
   margin-top: 2rem;
   color: black;
 }
 
-footer p {
-  padding-bottom: 1rem;
+footer .p-footer {
+  padding-bottom: 1.5rem;
   font-size: 0.7rem;
 }
 
@@ -410,7 +444,7 @@ nav li a:hover:after{
 
 /* gg  */
 
-@media(max-width: 738px) {
+@media(max-width: 648px) {
   .menuIcon {
     cursor: pointer;
     display: block;
